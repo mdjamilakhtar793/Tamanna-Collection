@@ -10,7 +10,7 @@ export const adminOnly = TryCatch(async (req, res, next) => {
 
   const user = await User.findById(id);
   if (!user) return next(new ErrorHandler("This is wrong Id", 401));
-  if (user.role !== "user")
+  if (user.role !== "admin")
     return next(new ErrorHandler("Please use correct Id", 403));
   next();
 });
